@@ -6,11 +6,7 @@ import {
   Globe2,
   Leaf,
   LineChart,
-  Menu,
-  Moon,
-  Sun,
   Users,
-  X,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -22,13 +18,9 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const Home = () => {
   const { data: session } = useSession();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMenuOpen,] = useState(false);
+  const [isDarkMode,] = useState(false);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
 
   if (session) {
     return (
@@ -85,28 +77,6 @@ const Home = () => {
             <span className="font-bold text-2xl">EcoTracker</span>
           </div>
           <div className="flex items-center gap-6">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleDarkMode}
-              className="hidden md:flex">
-              {isDarkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </Button>
             <nav className="hidden md:flex items-center gap-8">
               <Link
                 href="#features"
@@ -149,10 +119,10 @@ const Home = () => {
           </AnimatePresence>
         )}
       </header>
-      <main className="flex-1">
+      <main>
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 -z-10" />
-          <div className="space-y-6 pb-12 pt-16 md:pb-20 md:pt-24 lg:py-32">
+          <div className="space-y-6 pb-12 pt-16 md:pb-20 md:pt-24 lg:py-32 justify-center flex">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -350,15 +320,6 @@ const Home = () => {
           <p className="text-center text-sm text-muted-foreground md:text-left">
             Built for a sustainable future. Join our community today.
           </p>
-          <div className="flex gap-4">
-            <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
-              {isDarkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
         </div>
       </footer>
     </div>

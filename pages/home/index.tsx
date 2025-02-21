@@ -42,7 +42,7 @@ const Home = () => {
           </div>
         </header>
         <main className="flex-1 bg-gradient-to-b from-background to-muted">
-          <section className="space-y-6 pb-12 pt-16 md:pb-20 md:pt-24 lg:py-32">
+          <section className="space-y-6 pb-12 pt-16 md:pb-20 md:pt-24 lg:py-32 justify-center flex">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { generateUsers, allCommunities, type User } from "@/lib/data";
-import { WeatherStatus } from "@/components/weather-status";
+import { WeatherStatus } from "@/components/ui/weather-status";
 
 const ITEMS_PER_PAGE = 10;
 

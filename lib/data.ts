@@ -1,5 +1,5 @@
 export type User = {
-  lastActivity: Date;
+  lastActivity: string;
   activityStatus: WeatherStatus;
   id: string;
   name: string;
@@ -43,6 +43,8 @@ const achievements = [
   { icon: "🌞", name: "Solar Pioneer" },
 ];
 
+const date = ["Today", "Yesterday", "4 days ago", "Month ago", "2 months ago"];
+
 export function generateUsers(count: number): User[] {
   return Array.from({ length: count }, (_, i) => ({
     id: `user-${i}`,
@@ -56,7 +58,7 @@ export function generateUsers(count: number): User[] {
       { length: Math.floor(Math.random() * 3) + 1 },
       () => achievements[Math.floor(Math.random() * achievements.length)]
     ),
-    lastActivity: new Date(),
+    lastActivity: date[Math.floor(Math.random() * date.length)],
     activityStatus: ["excellent", "normal", "below", "poor"][
       Math.floor(Math.random() * 4)
     ] as WeatherStatus,

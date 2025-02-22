@@ -8,7 +8,7 @@ const NavBar: React.FC = () => {
  const router = useRouter();
 
  return (
-  <div className="fixed inset-y-0 left-0 w-64 transition-all border-r bg-card flex flex-col justify-between">
+  <div className="hidden lg:block fixed inset-y-0 left-0 w-64 transition-all border-r bg-card flex-col justify-between">
    <div className="p-4 flex flex-col items-center">
     <div className="flex items-center gap-2 mb-8">
      <Leaf className="h-6 w-6 text-green-500" />

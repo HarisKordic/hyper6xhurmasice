@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Kill any process running on port 3000
-echo "Killing process on port 3000..."
-kill $(lsof -t -i:3000) 2>/dev/null || true
+echo "Killing Next.js server if already running..."
+pkill -9 ^next-server
 
 # Install dependencies
 echo "Installing dependencies..."

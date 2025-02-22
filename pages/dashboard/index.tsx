@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { BadgeCheck, Globe2, Leaf, Users } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -20,12 +21,14 @@ import {
 } from "@/components/ui/chart";
 
 export default function Dashboard() {
+ const { data: session } = useSession();
+
  return (
   <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
    {/* Main Content */}
    <main className="p-6">
     <div className="mb-8">
-     <h1 className="text-3xl font-bold mb-2">Welcome back, Alex!</h1>
+     <h1 className="text-3xl font-bold mb-2">Welcome back, {session?.user?.name}</h1>
      <p className="text-muted-foreground">Your environmental impact dashboard for July 2024</p>
     </div>
 

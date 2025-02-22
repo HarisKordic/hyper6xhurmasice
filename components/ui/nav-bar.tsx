@@ -1,23 +1,11 @@
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { Home, Leaf, LineChart, Users, LogOut } from "lucide-react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 
 const NavBar: React.FC = () => {
- const [activeTab, setActiveTab] = useState<string>("/dashboard");
-
- useEffect(() => {
-  const storedTab = localStorage.getItem("activeTab");
-  if (storedTab) {
-   setActiveTab(storedTab);
-  }
- }, []);
-
- const handleTabClick = (tab: string) => {
-  setActiveTab(tab);
-  localStorage.setItem("activeTab", tab);
- };
+ const router = useRouter();
 
  return (
   <div className="fixed inset-y-0 left-0 w-64 transition-all border-r bg-card flex flex-col justify-between">
@@ -27,10 +15,10 @@ const NavBar: React.FC = () => {
      <span className="font-semibold text-lg">EcoTracker</span>
     </div>
     <nav className="space-y-2 w-full">
-     <Link href="/dashboard" onClick={() => handleTabClick("/dashboard")}>
+     <Link href="/dashboard">
       <div
        className={`flex items-center gap-3 rounded-lg px-4 py-3 transition-colors ${
-        activeTab === "/dashboard"
+        router.pathname === "/dashboard"
          ? "shadow-[2px_2px_10px_rgba(0,0,0,0.2)]"
          : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.07)]"
        }`}
@@ -39,10 +27,10 @@ const NavBar: React.FC = () => {
        Dashboard
       </div>
      </Link>
-     <Link href="/achievements" onClick={() => handleTabClick("/analytics")}>
+     <Link href="/achievements">
       <div
        className={`flex items-center gap-3 rounded-lg px-4 py-3 transition-colors ${
-        activeTab === "/analytics"
+        router.pathname === "/achievements"
          ? "shadow-[2px_2px_10px_rgba(0,0,0,0.2)]"
          : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.07)]"
        }`}
@@ -51,10 +39,10 @@ const NavBar: React.FC = () => {
        Achievements
       </div>
      </Link>
-     <Link href="/community" onClick={() => handleTabClick("/community")}>
+     <Link href="/community">
       <div
        className={`flex items-center gap-3 rounded-lg px-4 py-3 transition-colors ${
-        activeTab === "/community"
+        router.pathname === "/community"
          ? "shadow-[2px_2px_10px_rgba(0,0,0,0.2)]"
          : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.07)]"
        }`}

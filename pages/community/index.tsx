@@ -190,7 +190,7 @@ export default function Community() {
           </div>
 
           {/* Mobile Card View */}
-          <div className="md:hidden">
+          <div className="md:hidden max-h-[480px] overflow-y-auto">
             <AnimatePresence initial={false} mode="wait">
               {paginatedUsers.map((user, index) => (
                 <motion.div

@@ -1,4 +1,6 @@
 export type User = {
+  lastActivity: Date;
+  activityStatus: WeatherStatus;
   id: string;
   name: string;
   community: string;
@@ -10,8 +12,27 @@ export type User = {
   }>;
 };
 
-const communities = ["Green Valley", "Eco Warriors", "Solar Squad", "Ocean Guardians", "Forest Friends"];
-const firstNames = ["Sarah", "Mike", "Emma", "John", "Lisa", "David", "Anna", "James", "Maria", "Alex"];
+export type WeatherStatus = "excellent" | "normal" | "below" | "poor";
+
+const communities = [
+  "Green Valley",
+  "Eco Warriors",
+  "Solar Squad",
+  "Ocean Guardians",
+  "Forest Friends",
+];
+const firstNames = [
+  "Sarah",
+  "Mike",
+  "Emma",
+  "John",
+  "Lisa",
+  "David",
+  "Anna",
+  "James",
+  "Maria",
+  "Alex",
+];
 const lastNames = ["K.", "R.", "T.", "M.", "L.", "S.", "P.", "D.", "W.", "C."];
 const achievements = [
   { icon: "🌱", name: "Plant Master" },
@@ -35,6 +56,10 @@ export function generateUsers(count: number): User[] {
       { length: Math.floor(Math.random() * 3) + 1 },
       () => achievements[Math.floor(Math.random() * achievements.length)]
     ),
+    lastActivity: new Date(),
+    activityStatus: ["excellent", "normal", "below", "poor"][
+      Math.floor(Math.random() * 4)
+    ] as WeatherStatus,
   }));
 }
 

@@ -49,14 +49,14 @@ export default function Community() {
     const interval = setInterval(() => {
       setUsers((currentUsers) => {
         const newUsers = [...currentUsers];
-        for (let i = 0; i < 300; i++) {
+        for (let i = 0; i < 5; i++) {
           const randomIndex = Math.floor(Math.random() * newUsers.length);
           newUsers[randomIndex] = {
             ...newUsers[randomIndex],
             ecoPoints:
               newUsers[randomIndex].ecoPoints +
               Math.floor(Math.random() * 100) -
-              70,
+              50,
           };
         }
         return newUsers.sort((a, b) => b.ecoPoints - a.ecoPoints);

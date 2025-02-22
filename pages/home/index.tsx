@@ -267,17 +267,7 @@ const Home = () => {
      </motion.div>
     </section>
    </main>
-   <footer className="border-t py-8 md:py-12">
-    <div className="container max-w-7xl mx-auto flex flex-col items-center justify-between gap-4 md:flex-row">
-     <div className="flex items-center gap-2">
-      <Leaf className="h-6 w-6 text-green-500" />
-      <span className="font-semibold">EcoTracker</span>
-     </div>
-     <p className="text-center text-sm text-muted-foreground md:text-left">
-      Built for a sustainable future. Join our community today.
-     </p>
-    </div>
-   </footer>
+  
   </div>
  );
 };

@@ -200,7 +200,7 @@ export default function Community() {
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger>
-                              <div className="flex -space-x-2">
+                              <div className="flex space-x-0.5">
                                 {user.achievements.map((achievement, i) => (
                                   <Badge
                                     key={i}

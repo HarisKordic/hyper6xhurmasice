@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Home, Leaf, LineChart, Users, LogOut, Map } from "lucide-react";
+import { Leaf, LogOut, CircleDashed, Medal, MapPin, Users2Icon } from "lucide-react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
                 : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
                 }`}
             >
-              <Home className="h-6 w-6" />
+              <CircleDashed className="h-6 w-6" />
               <span className="hidden lg:inline">Dashboard</span>
             </div>
           </Link>
@@ -36,7 +36,7 @@ const NavBar: React.FC = () => {
                 : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
                 }`}
             >
-              <LineChart className="h-6 w-6" />
+              <Medal className="h-6 w-6" />
               <span className="hidden lg:inline">Achievements</span>
             </div>
           </Link>
@@ -48,7 +48,7 @@ const NavBar: React.FC = () => {
                 : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
                 }`}
             >
-              <Users className="h-6 w-6" />
+              <Users2Icon className="h-6 w-6" />
               <span className="hidden lg:inline">Community</span>
             </div>
           </Link>
@@ -60,7 +60,7 @@ const NavBar: React.FC = () => {
                 : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
                 }`}
             >
-              <Map className="h-6 w-6" />
+              <MapPin className="h-6 w-6" />
               <span className="hidden lg:inline">Map</span>
             </div>
           </Link>

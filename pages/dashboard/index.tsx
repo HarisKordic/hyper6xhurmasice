@@ -23,39 +23,39 @@ type StatCard = {
 
 // Stats data
 const stats: StatCard[] = [
-    {
-      title: "Carbon Footprint",
-      value: "2.4 tons",
-      change: "-12% from last month",
-      progress: 65,
-      icon: <Leaf className="h-4 w-4" />,
-      iconColor: "text-green-500",
-    },
-    {
-      title: "Local Air Quality",
-      value: "Good",
-      change: "AQI: 42 (Low pollution)",
-      progress: 85,
-      icon: <Globe2 className="h-4 w-4" />,
-      iconColor: "text-blue-500",
-    },
-    {
-      title: "Community Rank",
-      value: "#42",
-      change: "Top 10% in your area",
-      progress: 90,
-      icon: <Users className="h-4 w-4" />,
-      iconColor: "text-indigo-500",
-    },
-    {
-      title: "Eco Points",
-      value: "1,234",
-      change: "+234 this month",
-      progress: 72,
-      icon: <BadgeCheck className="h-4 w-4" />,
-      iconColor: "text-yellow-500",
-    },
-  ];
+  {
+    title: "Carbon Footprint",
+    value: "~20 kg CO₂",
+    change: "-12% from last month",
+    progress: 65,
+    icon: <Leaf className="h-4 w-4" />,
+    iconColor: "text-green-500",
+  },
+  {
+    title: "Local Air Quality",
+    value: "Moderate",
+    change: "Main pollutant: PM2.511  µg/ m³",
+    progress: 85,
+    icon: <Globe2 className="h-4 w-4" />,
+    iconColor: "text-blue-500",
+  },
+  {
+    title: "Community Rank",
+    value: "#42",
+    change: "Top 10% in your area",
+    progress: 90,
+    icon: <Users className="h-4 w-4" />,
+    iconColor: "text-indigo-500",
+  },
+  {
+    title: "Eco Points",
+    value: "1,234",
+    change: "+234 this month",
+    progress: 72,
+    icon: <BadgeCheck className="h-4 w-4" />,
+    iconColor: "text-yellow-500",
+  },
+];
 
 // Modify your Dashboard component to use the data
 export default function Dashboard() {
@@ -72,7 +72,7 @@ export default function Dashboard() {
           <span className="block sm:inline"> {session?.user?.name}</span>
         </h1>
         <p className="text-muted-foreground">
-          Your environmental impact dashboard for July 2024
+          Your environmental impact stats for {new Date().toDateString()}
         </p>
       </div>
 

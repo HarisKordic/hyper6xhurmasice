@@ -215,120 +215,118 @@ export default function Achievements() {
  );
 
  return (
-  <div className="p-6">
-   <div className="space-y-8">
-    {/* Header */}
+  <div className="space-y-8">
+   {/* Header */}
+   <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div>
+     <h1 className="text-3xl font-bold">Achievements</h1>
+     <p className="text-muted-foreground">Track your environmental impact milestones</p>
+    </div>
+    <div className="flex items-center gap-2">
+     <div className="relative">
+      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+      <Input
+       type="search"
+       placeholder="Search achievements..."
+       className="pl-8 md:w-[250px]"
+       value={searchQuery}
+       onChange={(e) => setSearchQuery(e.target.value)}
+      />
+     </div>
+    </div>
+   </div>
+
+   {/* Achievement Progress Overview */}
+   <div className="grid gap-4 md:grid-cols-4">
+    <Card>
+     <CardContent className="pt-6">
+      <div className="text-center">
+       <div className="text-4xl font-bold">12/20</div>
+       <p className="text-sm text-muted-foreground">Total Achievements</p>
+      </div>
+     </CardContent>
+    </Card>
+    <Card>
+     <CardContent className="pt-6">
+      <div className="text-center">
+       <div className="text-4xl font-bold text-yellow-500">5</div>
+       <p className="text-sm text-muted-foreground">Gold Badges</p>
+      </div>
+     </CardContent>
+    </Card>
+    <Card>
+     <CardContent className="pt-6">
+      <div className="text-center">
+       <div className="text-4xl font-bold text-slate-400">4</div>
+       <p className="text-sm text-muted-foreground">Silver Badges</p>
+      </div>
+     </CardContent>
+    </Card>
+    <Card>
+     <CardContent className="pt-6">
+      <div className="text-center">
+       <div className="text-4xl font-bold text-orange-600">3</div>
+       <p className="text-sm text-muted-foreground">Bronze Badges</p>
+      </div>
+     </CardContent>
+    </Card>
+   </div>
+
+   {/* Recent Achievement */}
+   <div className="relative overflow-hidden rounded-xl border bg-gradient-to-r from-primary/5 to-secondary/5 p-6">
     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
      <div>
-      <h1 className="text-3xl font-bold">Achievements</h1>
-      <p className="text-muted-foreground">Track your environmental impact milestones</p>
+      <Badge className="mb-2 bg-green-500/10 text-green-500">New Achievement!</Badge>
+      <h2 className="text-2xl font-bold">Zero Waste Champion 🏆</h2>
+      <p className="text-muted-foreground">
+       Congratulations! You have achieved zero waste status for 30 days straight.
+      </p>
      </div>
-     <div className="flex items-center gap-2">
-      <div className="relative">
-       <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-       <Input
-        type="search"
-        placeholder="Search achievements..."
-        className="pl-8 md:w-[250px]"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-       />
-      </div>
-     </div>
+     <Button className="bg-green-500 text-white hover:bg-green-600">Share Achievement</Button>
     </div>
-
-    {/* Achievement Progress Overview */}
-    <div className="grid gap-4 md:grid-cols-4">
-     <Card>
-      <CardContent className="pt-6">
-       <div className="text-center">
-        <div className="text-4xl font-bold">12/20</div>
-        <p className="text-sm text-muted-foreground">Total Achievements</p>
-       </div>
-      </CardContent>
-     </Card>
-     <Card>
-      <CardContent className="pt-6">
-       <div className="text-center">
-        <div className="text-4xl font-bold text-yellow-500">5</div>
-        <p className="text-sm text-muted-foreground">Gold Badges</p>
-       </div>
-      </CardContent>
-     </Card>
-     <Card>
-      <CardContent className="pt-6">
-       <div className="text-center">
-        <div className="text-4xl font-bold text-slate-400">4</div>
-        <p className="text-sm text-muted-foreground">Silver Badges</p>
-       </div>
-      </CardContent>
-     </Card>
-     <Card>
-      <CardContent className="pt-6">
-       <div className="text-center">
-        <div className="text-4xl font-bold text-orange-600">3</div>
-        <p className="text-sm text-muted-foreground">Bronze Badges</p>
-       </div>
-      </CardContent>
-     </Card>
-    </div>
-
-    {/* Recent Achievement */}
-    <div className="relative overflow-hidden rounded-xl border bg-gradient-to-r from-primary/5 to-secondary/5 p-6">
-     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div>
-       <Badge className="mb-2 bg-green-500/10 text-green-500">New Achievement!</Badge>
-       <h2 className="text-2xl font-bold">Zero Waste Champion 🏆</h2>
-       <p className="text-muted-foreground">
-        Congratulations! You have achieved zero waste status for 30 days straight.
-       </p>
-      </div>
-      <Button className="bg-green-500 text-white hover:bg-green-600">Share Achievement</Button>
-     </div>
-    </div>
-
-    {/* Achievement Categories */}
-    <Tabs defaultValue="environmental" className="space-y-4">
-     <TabsList>
-      <TabsTrigger value="environmental">Environmental</TabsTrigger>
-      <TabsTrigger value="community">Community</TabsTrigger>
-      <TabsTrigger value="sustainable">Sustainable Living</TabsTrigger>
-      <TabsTrigger value="special">Special Events</TabsTrigger>
-     </TabsList>
-
-     <TabsContent value="environmental" className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
-       {achievements.environmental.map((achievement) => (
-        <AchievementCard key={achievement.id} achievement={achievement} />
-       ))}
-      </div>
-     </TabsContent>
-
-     <TabsContent value="community" className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
-       {achievements.community.map((achievement) => (
-        <AchievementCard key={achievement.id} achievement={achievement} />
-       ))}
-      </div>
-     </TabsContent>
-
-     <TabsContent value="sustainable" className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
-       {achievements.sustainable.map((achievement) => (
-        <AchievementCard key={achievement.id} achievement={achievement} />
-       ))}
-      </div>
-     </TabsContent>
-
-     <TabsContent value="special" className="space-y-4">
-      <div className="grid gap-4 md:grid-cols-2">
-       {achievements.special.map((achievement) => (
-        <AchievementCard key={achievement.id} achievement={achievement} />
-       ))}
-      </div>
-     </TabsContent>
-    </Tabs>
    </div>
+
+   {/* Achievement Categories */}
+   <Tabs defaultValue="environmental" className="space-y-4">
+    <TabsList>
+     <TabsTrigger value="environmental">Environmental</TabsTrigger>
+     <TabsTrigger value="community">Community</TabsTrigger>
+     <TabsTrigger value="sustainable">Sustainable Living</TabsTrigger>
+     <TabsTrigger value="special">Special Events</TabsTrigger>
+    </TabsList>
+
+    <TabsContent value="environmental" className="space-y-4">
+     <div className="grid gap-4 md:grid-cols-2">
+      {achievements.environmental.map((achievement) => (
+       <AchievementCard key={achievement.id} achievement={achievement} />
+      ))}
+     </div>
+    </TabsContent>
+
+    <TabsContent value="community" className="space-y-4">
+     <div className="grid gap-4 md:grid-cols-2">
+      {achievements.community.map((achievement) => (
+       <AchievementCard key={achievement.id} achievement={achievement} />
+      ))}
+     </div>
+    </TabsContent>
+
+    <TabsContent value="sustainable" className="space-y-4">
+     <div className="grid gap-4 md:grid-cols-2">
+      {achievements.sustainable.map((achievement) => (
+       <AchievementCard key={achievement.id} achievement={achievement} />
+      ))}
+     </div>
+    </TabsContent>
+
+    <TabsContent value="special" className="space-y-4">
+     <div className="grid gap-4 md:grid-cols-2">
+      {achievements.special.map((achievement) => (
+       <AchievementCard key={achievement.id} achievement={achievement} />
+      ))}
+     </div>
+    </TabsContent>
+   </Tabs>
   </div>
  );
 }

@@ -31,7 +31,7 @@ const fetchDashboardData = async () => {
 };
 
 const ChartSkeleton = () => (
-  <Card>
+  <Card className="border-none shadow-md">
     <CardHeader>
       <Skeleton className="h-6 w-3/4" />
       <Skeleton className="h-4 w-1/2" />
@@ -67,9 +67,9 @@ const Charts = () => {
 
   return (
     <div className="grid gap-6 md:grid-cols-2 mb-6">
-      <Card className="border-0 shadow-sm">
+      <Card className="border-none shadow-md">
         <CardHeader>
-          <CardTitle className="text-lg font-medium">
+          <CardTitle className="text-lg font-semibold text-foreground">
             Monthly Carbon Footprint
           </CardTitle>
           <CardDescription className="text-sm text-muted-foreground">
@@ -82,14 +82,24 @@ const Charts = () => {
               <AreaChart data={data.carbonFootprint}>
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  className="stroke-muted/30"
+                  className="stroke-muted/20"
                 />
                 <XAxis
                   dataKey="month"
                   className="text-xs text-muted-foreground"
+                  tick={{ fill: "hsl(var(--muted-foreground))" }}
                 />
-                <YAxis className="text-xs text-muted-foreground" />
-                <Tooltip />
+                <YAxis
+                  className="text-xs text-muted-foreground"
+                  tick={{ fill: "hsl(var(--muted-foreground))" }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "hsl(var(--background))",
+                    borderColor: "hsl(var(--border))",
+                  }}
+                  labelStyle={{ color: "hsl(var(--foreground))" }}
+                />
                 <Area
                   type="monotone"
                   dataKey="amount"
@@ -101,9 +111,9 @@ const Charts = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className="border-0 shadow-sm">
+      <Card className="border-none shadow-md">
         <CardHeader>
-          <CardTitle className="text-lg font-medium">
+          <CardTitle className="text-lg font-semibold text-foreground">
             Local Pollution Levels
           </CardTitle>
           <CardDescription className="text-sm text-muted-foreground">
@@ -113,24 +123,34 @@ const Charts = () => {
         <CardContent>
           <div className="h-[240px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data.pollutionLevels}>
+              <AreaChart data={data.pollutionLevels}>
                 <CartesianGrid
                   strokeDasharray="3 3"
-                  className="stroke-muted/30"
+                  className="stroke-muted/20"
                 />
                 <XAxis
                   dataKey="pollutant"
                   className="text-xs text-muted-foreground"
+                  tick={{ fill: "hsl(var(--muted-foreground))" }}
                 />
-                <YAxis className="text-xs text-muted-foreground" />
-                <Tooltip />
-                <Legend wrapperStyle={{ display: "none" }} />
-                <Bar
+                <YAxis
+                  className="text-xs text-muted-foreground"
+                  tick={{ fill: "hsl(var(--muted-foreground))" }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "hsl(var(--background))",
+                    borderColor: "hsl(var(--border))",
+                  }}
+                  labelStyle={{ color: "hsl(var(--foreground))" }}
+                />
+                <Area
+                  type="monotone"
                   dataKey="level"
-                  fill="hsl(var(--primary)/.8)"
-                  radius={[6, 6, 0, 0]}
+                  stroke="hsl(var(--primary))"
+                  fill="hsl(var(--primary)/.1)"
                 />
-              </BarChart>
+              </AreaChart>
             </ResponsiveContainer>
           </div>
         </CardContent>

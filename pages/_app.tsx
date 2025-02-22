@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import Layout from "@/components/layout";
+import { Toaster } from "sonner";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ export default function App({
       <AuthWrapper>
         <QueryClientProvider client={queryClient}>
           <Layout>
+            <Toaster />
             <Component {...pageProps} />
           </Layout>
         </QueryClientProvider>

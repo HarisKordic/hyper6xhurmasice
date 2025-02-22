@@ -1,6 +1,13 @@
 "use client";
 
-import { useQuery } from "react-query";
+import { ErrorAlert } from "@/components/error-alert";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Area,
   AreaChart,
@@ -12,17 +19,8 @@ import {
   YAxis,
 } from "@/components/ui/chart";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
+import { useQuery } from "react-query";
 import { Legend, Tooltip } from "recharts";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ErrorAlert } from "@/components/error-alert";
 
 const fetchDashboardData = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard`);

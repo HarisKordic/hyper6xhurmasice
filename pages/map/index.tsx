@@ -7,7 +7,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Car, Bike, Zap } from "lucide-react";
 
 // Mock data for users and their activities
-const mockUsers = [
+
+type MapUser = {
+  id: number,
+  name: string,
+  avatar: string,
+  location: { lat: number, lng: number },
+  activity: string,
+  timestamp: string,
+  icon: React.ReactNode,
+  emission: string,
+}
+const mockUsers: MapUser[] = [
   {
     id: 1,
     name: "Sarah K.",
@@ -41,7 +52,7 @@ const mockUsers = [
 ];
 
 export default function EcoMap() {
-  const [selectedUser, setSelectedUser] = useState<typeof mockUsers>();
+  const [selectedUser, setSelectedUser] = useState<MapUser>();
 
   return (
     <div className="h-screen w-full bg-black text-white relative">

@@ -41,7 +41,7 @@ const mockUsers = [
 ];
 
 export default function EcoMap() {
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedUser, setSelectedUser] = useState<typeof mockUsers>();
 
   return (
     <div className="h-screen w-full bg-black text-white relative">
@@ -67,7 +67,7 @@ export default function EcoMap() {
                 onClick={() => setSelectedUser(user)}>
                 <Avatar className="w-10 h-10 border-2 border-green-500 transition-transform transform hover:scale-110">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  <AvatarFallback className="text-black">{user.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="absolute bottom-0 right-0 bg-green-500 rounded-full w-4 h-4 flex items-center justify-center border-2 border-black">
                   {user.icon}
@@ -84,18 +84,17 @@ export default function EcoMap() {
           {mockUsers.map((user) => (
             <div
               key={user.id}
-              className={`flex items-start space-x-4 mb-4 p-2 rounded-lg transition-colors ${
-                selectedUser?.id === user.id
-                  ? "bg-zinc-800/50"
-                  : "hover:bg-zinc-800/30"
-              }`}>
+              className={`flex items-start space-x-4 mb-4 p-2 rounded-lg transition-colors ${selectedUser?.id === user.id
+                ? "bg-zinc-800/50"
+                : "hover:bg-zinc-800/30"
+                }`}>
               <Avatar className="w-10 h-10">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-sm">{user.name}</h3>
+                  <h3 className="font-semibold text-sm text-white">{user.name}</h3>
                   <span className="text-xs text-zinc-400">
                     {user.timestamp}
                   </span>

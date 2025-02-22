@@ -10,7 +10,7 @@ const BottomNavBar: React.FC<{ className?: string }> = ({ className }) => {
  return (
   <div
    className={clsx(
-    "fixed bottom-4 left-1/2 -translate-x-1/2 w-[96%] max-w-md bg-white/80 backdrop-blur-md shadow-lg border rounded-full flex justify-around py-3 px-6 z-50",
+    "fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/80 backdrop-blur-md shadow-lg border rounded-full flex justify-around py-3 px-6 z-50",
     className
    )}
   >

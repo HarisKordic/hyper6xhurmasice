@@ -77,7 +77,7 @@ export default function EcoMap() {
  }
 
  return (
-  <div className="h-screen w-full bg-black text-white relative">
+  <div className="h-screen w-full bg-black text-white relative overflow-y-hidden">
    {/* Activity Feed */}
    <Card className="absolute top-4 right-4 md:w-80 bg-black/80 backdrop-blur-md border-zinc-800 z-40 shadow-lg">
     <ScrollArea className="h-48 rounded-lg p-4">

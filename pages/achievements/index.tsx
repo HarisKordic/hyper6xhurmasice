@@ -12,7 +12,6 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ShareButton from "@/components/ui/share-button";
 
-// Define the Achievement type
 type Achievement = {
   id: string;
   name: string;
@@ -25,7 +24,6 @@ type Achievement = {
   level: string;
 };
 
-// Define the AchievementsData type
 type AchievementsData = {
   environmental: Achievement[];
   community: Achievement[];
@@ -33,7 +31,6 @@ type AchievementsData = {
   special: Achievement[];
 };
 
-// Sample achievements data
 const achievements: AchievementsData = {
   environmental: [
     {
@@ -213,7 +210,6 @@ export default function Achievements() {
 
   return (
     <div className="space-y-8 p-4 md:p-8">
-      {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-bold">Achievements</h1>
@@ -233,7 +229,6 @@ export default function Achievements() {
         </div>
       </div>
 
-      {/* Achievement Progress Overview */}
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
         <Card>
           <CardContent className="p-4 text-center">
@@ -267,7 +262,6 @@ export default function Achievements() {
         </Card>
       </div>
 
-      {/* Recent Achievement */}
       <Card className="bg-primary/5">
         <CardContent className="p-4 md:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -286,7 +280,6 @@ export default function Achievements() {
         </CardContent>
       </Card>
 
-      {/* Achievement Categories */}
       <Tabs defaultValue="environmental" className="space-y-4">
         <TabsList className="w-full justify-start overflow-auto">
           <TabsTrigger value="environmental">Environmental</TabsTrigger>

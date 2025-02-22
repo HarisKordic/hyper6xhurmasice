@@ -4,7 +4,6 @@ import { generateUsers, User } from "@/lib/data";
 import { useQuery } from "react-query";
 import TableSkeleton from "./table-skeleton";
 
-// Type for API response
 type ApiUser = {
   id: number;
   name: string;
@@ -13,11 +12,9 @@ type ApiUser = {
   image: string;
 };
 
-// Get generated user data for enrichment
 const generatedUsers = generateUsers(5);
 
 const TopTable = () => {
-  // Fetch real users from API
   const {
     data: apiUsers,
     isLoading,
@@ -36,8 +33,6 @@ const TopTable = () => {
       <ErrorAlert message="Failed to load users. Please try again later." />
     );
   }
-
-  // Combine real users with generated data, limiting to the number of generated users
   const enhancedUsers: User[] =
     apiUsers?.slice(0, generatedUsers.length).map((apiUser, index) => ({
       id: apiUser.id.toString(),

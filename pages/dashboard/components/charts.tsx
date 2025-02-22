@@ -1,4 +1,5 @@
 "use client";
+<<<<<<< Updated upstream
 import { ErrorAlert } from "@/components/error-alert";
 import {
   Card,
@@ -7,6 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+=======
+
+import { useQuery } from "react-query";
+>>>>>>> Stashed changes
 import {
   Area,
   AreaChart,
@@ -18,7 +23,13 @@ import {
   YAxis,
 } from "@/components/ui/chart";
 import { Skeleton } from "@/components/ui/skeleton";
+<<<<<<< Updated upstream
 import { useQuery } from "react-query";
+=======
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
+import { Legend, Tooltip } from "recharts";
+>>>>>>> Stashed changes
 
 const fetchDashboardData = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard`);
@@ -65,18 +76,29 @@ const Charts = () => {
 
   return (
     <div className="grid gap-6 md:grid-cols-2 mb-6">
-      <Card>
+      <Card className="border-0 shadow-sm">
         <CardHeader>
-          <CardTitle>Monthly Carbon Footprint</CardTitle>
-          <CardDescription>Your carbon emissions over time</CardDescription>
+          <CardTitle className="text-lg font-medium">
+            Monthly Carbon Footprint
+          </CardTitle>
+          <CardDescription className="text-sm text-muted-foreground">
+            Your carbon emissions over time
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="h-[240px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data.carbonFootprint}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                <XAxis dataKey="month" className="text-sm" />
-                <YAxis className="text-sm" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  className="stroke-muted/30"
+                />
+                <XAxis
+                  dataKey="month"
+                  className="text-xs text-muted-foreground"
+                />
+                <YAxis className="text-xs text-muted-foreground" />
+                <Tooltip />
                 <Area
                   type="monotone"
                   dataKey="amount"
@@ -88,19 +110,35 @@ const Charts = () => {
           </div>
         </CardContent>
       </Card>
-      <Card>
+      <Card className="border-0 shadow-sm">
         <CardHeader>
-          <CardTitle>Local Pollution Levels</CardTitle>
-          <CardDescription>Air quality metrics in your area</CardDescription>
+          <CardTitle className="text-lg font-medium">
+            Local Pollution Levels
+          </CardTitle>
+          <CardDescription className="text-sm text-muted-foreground">
+            Air quality metrics in your area
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="h-[240px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data.pollutionLevels}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                <XAxis dataKey="pollutant" className="text-sm" />
-                <YAxis className="text-sm" />
-                <Bar dataKey="level" fill="hsl(var(--primary))" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  className="stroke-muted/30"
+                />
+                <XAxis
+                  dataKey="pollutant"
+                  className="text-xs text-muted-foreground"
+                />
+                <YAxis className="text-xs text-muted-foreground" />
+                <Tooltip />
+                <Legend wrapperStyle={{ display: "none" }} />
+                <Bar
+                  dataKey="level"
+                  fill="hsl(var(--primary)/.8)"
+                  radius={[6, 6, 0, 0]}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>

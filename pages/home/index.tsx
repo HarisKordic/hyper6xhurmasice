@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn, } from "next-auth/react";
 import { ArrowRight, Globe2, Leaf, LineChart, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Home = () => {
-  const { data: session } = useSession();
   const [isMenuOpen] = useState(false);
   const [isDarkMode] = useState(false);
 

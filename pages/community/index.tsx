@@ -120,7 +120,7 @@ export default function Community() {
                         </CardHeader>
                         <Table>
                             <TableHeader>
-                                <TableRow>
+                                <TableRow >
                                     <TableHead className="w-[100px]">Rank</TableHead>
                                     <TableHead className="w-[200px]">User</TableHead>
                                     <TableHead className="w-[200px]">Community</TableHead>
@@ -139,7 +139,7 @@ export default function Community() {
                                             exit={{ opacity: 0 }}
                                             transition={{ duration: 0.2 }}
                                             layout
-                                            className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted"
+                                            className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
                                         >
                                             <TableCell className="font-medium">
                                                 #{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
@@ -215,7 +215,7 @@ export default function Community() {
                     </Card>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

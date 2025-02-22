@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableFooter, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ export default function Community() {
   <div className="min-h-screen bg-background">
    {/* Main Content */}
    <div className="container">
-    <Card className="max-h-[800px] flex flex-col">
+    <Card className="max-h-[800px] flex flex-col border-0 shadow-none">
      <CardHeader className="border-b">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
        <div>
@@ -99,7 +99,7 @@ export default function Community() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           layout
-          className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
+          className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[1px_1px_10px_rgba(0,0,0,0.45)]"
          >
           <TableCell className="font-medium">#{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</TableCell>
           <TableCell>{user.name}</TableCell>
@@ -145,6 +145,9 @@ export default function Community() {
         ))}
        </AnimatePresence>
       </TableBody>
+      <TableFooter className="bg-transparent text-transparent">
+       <>1</>
+      </TableFooter>
      </Table>
 
      <div className="flex items-center justify-between px-6 py-4">

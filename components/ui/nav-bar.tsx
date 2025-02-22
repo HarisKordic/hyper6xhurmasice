@@ -3,61 +3,73 @@ import { Home, Leaf, LineChart, Users, LogOut } from "lucide-react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-
 const NavBar: React.FC = () => {
-  const router = useRouter();
+ const router = useRouter();
 
-  return (
-    <div className="hidden lg:block fixed inset-y-0 left-0 w-64 transition-all bg-card flex-col justify-between">
-      <div className="p-4 flex flex-col items-center">
-        <div className="flex items-center gap-2 mb-8">
-          <Leaf className="h-6 w-6 text-green-500" />
-          <span className="font-semibold text-lg">EcoTracker</span>
-        </div>
-        <nav className="space-y-2 w-full">
-          <Link href="/dashboard">
-            <div
-              className={`flex items-center gap-3 rounded-lg px-4 py-3 transition-colors ${router.pathname === "/dashboard"
-                ? "shadow-[2px_2px_10px_rgba(0,0,0,0.2)]"
-                : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.07)]"
-                }`}
-            >
-              <Home className="h-6 w-6" />
-              Dashboard
-            </div>
-          </Link>
-          <Link href="/achievements">
-            <div
-              className={`flex items-center gap-3 rounded-lg px-4 py-3 transition-colors ${router.pathname === "/achievements"
-                ? "shadow-[2px_2px_10px_rgba(0,0,0,0.2)]"
-                : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.07)]"
-                }`}
-            >
-              <LineChart className="h-6 w-6" />
-              Achievements
-            </div>
-          </Link>
-          <Link href="/community">
-            <div
-              className={`flex items-center gap-3 rounded-lg px-4 py-3 transition-colors ${router.pathname === "/community"
-                ? "shadow-[2px_2px_10px_rgba(0,0,0,0.2)]"
-                : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.07)]"
-                }`}
-            >
-              <Users className="h-6 w-6" />
-              Community
-            </div>
-          </Link>
-        </nav>
-      </div>
-      <div className="p-4 w-full">
-        <Button className="w-full flex items-center gap-3" variant="outline" onClick={() => signOut()}>
-          <LogOut className="h-6 w-6" />
-          Sign Out
-        </Button>
-      </div>
+ return (
+  <div className="fixed left-0 top-0 w-full lg:w-64 lg:h-full border-b lg:border-r bg-backgourn/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60 flex flex-row lg:flex-col justify-between p-4 z-30">
+   {/* Logo & Navigation Section */}
+   <div className="p-4 flex flex-row w-full lg:flex-col items-center justify-between gap-16">
+    <div className="flex items-center gap-2">
+     <Leaf className="h-6 w-6 text-green-500" />
+     <span className="font-semibold text-lg">EcoTracker</span>
     </div>
-  );
+
+    {/* Navigation Links */}
+    <nav className="flex flex-row lg:flex-col gap-1 w-full justify-end lg:justify-start">
+     <Link href="/dashboard">
+      <div
+       className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${
+        router.pathname === "/dashboard"
+         ? "shadow-[2px_2px_10px_rgba(0,0,0,0.3)]"
+         : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
+       }`}
+      >
+       <Home className="h-6 w-6" />
+       <span className="hidden lg:inline">Dashboard</span>
+      </div>
+     </Link>
+
+     <Link href="/achievements">
+      <div
+       className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${
+        router.pathname === "/achievements"
+         ? "shadow-[2px_2px_10px_rgba(0,0,0,0.3)]"
+         : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
+       }`}
+      >
+       <LineChart className="h-6 w-6" />
+       <span className="hidden lg:inline">Achievements</span>
+      </div>
+     </Link>
+
+     <Link href="/community">
+      <div
+       className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${
+        router.pathname === "/community"
+         ? "shadow-[2px_2px_10px_rgba(0,0,0,0.3)]"
+         : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
+       }`}
+      >
+       <Users className="h-6 w-6" />
+       <span className="hidden lg:inline">Community</span>
+      </div>
+     </Link>
+
+     <div className="lg:hidden flex items-center gap-3 px-4 py-2 rounded-lg transition-colors">
+      <LogOut className="h-6 w-6" onClick={() => signOut()} />
+     </div>
+    </nav>
+   </div>
+   {/* Sign Out Button */}
+   <div className="hidden lg:block">
+    <Button className="w-full flex items-center gap-3" variant="outline" onClick={() => signOut()}>
+     <LogOut className="h-6 w-6" />
+     Sign Out
+    </Button>
+   </div>
+  </div>
+ );
 };
 
 export { NavBar };

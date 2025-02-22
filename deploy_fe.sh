@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Pulling latest changes from git..."
+git pull
+
 echo "Killing Next.js server if already running..."
 pkill -9 ^next-server
 

@@ -11,7 +11,6 @@ import CommunityTable from "@/components/ui/community-table";
 import { generateUsers, type User } from "@/lib/data";
 import { useState } from "react";
 import Charts from "./components/charts";
-import TopTable from "./components/top-table";
 
 type StatCard = {
   title: string;

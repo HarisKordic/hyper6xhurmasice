@@ -11,7 +11,6 @@ import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ShareButton from "@/components/ui/share-button";
-import { Button } from "@/components/ui/button";
 
 // Define the Achievement type
 type Achievement = {
@@ -282,9 +281,7 @@ export default function Achievements() {
                 straight.
               </p>
             </div>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Share Achievement
-            </Button>
+            <ShareButton />
           </div>
         </CardContent>
       </Card>

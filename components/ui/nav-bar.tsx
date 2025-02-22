@@ -55,7 +55,7 @@ const NavBar: React.FC = () => {
 
           <Link href="/map">
             <div
-              className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${router.pathname === "/community"
+              className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors ${router.pathname === "/map"
                 ? "shadow-[2px_2px_10px_rgba(0,0,0,0.3)]"
                 : "text-muted-foreground hover:shadow-[2px_2px_10px_rgba(0,0,0,0.13)]"
                 }`}

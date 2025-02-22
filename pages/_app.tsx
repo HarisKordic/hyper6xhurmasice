@@ -20,9 +20,9 @@ function AuthWrapper({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-export default function App({ 
-  Component, 
-  pageProps: { session, ...pageProps }
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
     <SessionProvider session={session}>

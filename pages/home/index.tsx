@@ -1,13 +1,7 @@
 "use client";
 
 import { useSession, signIn, signOut } from "next-auth/react";
-import {
-  ArrowRight,
-  Globe2,
-  Leaf,
-  LineChart,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Globe2, Leaf, LineChart, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 // Import motion components from framer-motion
@@ -18,55 +12,8 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const Home = () => {
   const { data: session } = useSession();
-  const [isMenuOpen,] = useState(false);
-  const [isDarkMode,] = useState(false);
-
-
-  if (session) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="container max-w-7xl mx-auto flex h-20 items-center justify-between px-4 md:px-8">
-            <div className="flex items-center gap-3">
-              <Leaf className="h-7 w-7 text-green-500" />
-              <span className="font-bold text-2xl">EcoTracker</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">
-                Welcome, {session.user?.name}
-              </span>
-              <Button variant="outline" onClick={() => signOut()}>
-                Sign Out
-              </Button>
-            </div>
-          </div>
-        </header>
-        <main className="flex-1 bg-gradient-to-b from-background to-muted">
-          <section className="space-y-6 pb-12 pt-16 md:pb-20 md:pt-24 lg:py-32 justify-center flex">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="container flex flex-col items-center gap-4 text-center">
-              <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-                Ready to make an impact?
-              </h1>
-              <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-                Your dashboard is waiting. Continue tracking your environmental
-                impact and earning achievements.
-              </p>
-              <Link href="/dashboard">
-                <Button size="lg" className="gap-2">
-                  Go to Dashboard
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-            </motion.div>
-          </section>
-        </main>
-      </div>
-    );
-  }
+  const [isMenuOpen] = useState(false);
+  const [isDarkMode] = useState(false);
 
   return (
     <div className={`flex min-h-screen flex-col ${isDarkMode ? "dark" : ""}`}>
@@ -88,7 +35,10 @@ const Home = () => {
                 className="text-sm font-medium hover:text-primary">
                 Achievements
               </Link>
-              <Button onClick={() => signIn("google")}>Sign In</Button>
+              <Button
+                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}>
+                Sign In
+              </Button>
             </nav>
           </div>
         </div>
@@ -111,7 +61,11 @@ const Home = () => {
                   className="text-sm font-medium hover:text-primary">
                   Achievements
                 </Link>
-                <Button onClick={() => signIn("google")} className="w-full">
+                <Button
+                  onClick={() =>
+                    signIn("google", { callbackUrl: "/dashboard" })
+                  }
+                  className="w-full">
                   Sign In
                 </Button>
               </nav>
@@ -145,7 +99,9 @@ const Home = () => {
                 whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  onClick={() => signIn("google")}
+                  onClick={() =>
+                    signIn("google", { callbackUrl: "/dashboard" })
+                  }
                   className="gap-2">
                   Get Started
                   <ArrowRight className="h-4 w-4" />
@@ -302,7 +258,7 @@ const Home = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
-                onClick={() => signIn("google")}
+                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
                 className="gap-2">
                 Sign In with Google
                 <ArrowRight className="h-4 w-4" />

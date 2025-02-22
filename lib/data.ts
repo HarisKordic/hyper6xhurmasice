@@ -14,13 +14,7 @@ export type User = {
 
 export type WeatherStatus = "excellent" | "normal" | "below" | "poor";
 
-const communities = [
-  "Green Valley",
-  "Eco Warriors",
-  "Solar Squad",
-  "Ocean Guardians",
-  "Forest Friends",
-];
+const communities = ["Best Mostar", "HTEC", "Hackathon", "ZenDev", "Symphony"];
 const firstNames = [
   "Sarah",
   "Mike",

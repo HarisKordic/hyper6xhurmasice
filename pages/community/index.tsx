@@ -43,27 +43,81 @@ export default function Community() {
   const [users, setUsers] = useState<User[]>(() => generateUsers(1000));
   const [selectedCommunity, setSelectedCommunity] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [, setUpdateCount] = useState(0);
+  const generateRandomUpdate = (currentPoints: number) => {
+    // Generate a random change between -100 and 200 with higher probability of positive changes
+    const change = Math.floor(Math.random() * 300) - 100;
 
-  // Simulate real-time updates
+    // Add some variance to make bigger jumps occasionally
+    const multiplier = Math.random() < 0.2 ? Math.random() * 2 + 1 : 1;
+
+    return Math.max(0, currentPoints + Math.floor(change * multiplier));
+  };
+
+  // Enhanced real-time updates
   useEffect(() => {
-    const interval = setInterval(() => {
-      setUsers((currentUsers) => {
-        const newUsers = [...currentUsers];
-        for (let i = 0; i < 5; i++) {
-          const randomIndex = Math.floor(Math.random() * newUsers.length);
-          newUsers[randomIndex] = {
-            ...newUsers[randomIndex],
-            ecoPoints:
-              newUsers[randomIndex].ecoPoints +
-              Math.floor(Math.random() * 100) -
-              50,
-          };
-        }
-        return newUsers.sort((a, b) => b.ecoPoints - a.ecoPoints);
-      });
-    }, 3000);
+    // Create multiple update intervals with different frequencies
+    const intervals = [
+      // Frequent small updates
+      setInterval(() => {
+        setUsers((currentUsers) => {
+          const newUsers = [...currentUsers];
+          // Update 2-5 random users
+          const updateCount = Math.floor(Math.random() * 4) + 2;
 
-    return () => clearInterval(interval);
+          for (let i = 0; i < updateCount; i++) {
+            const randomIndex = Math.floor(Math.random() * newUsers.length);
+            newUsers[randomIndex] = {
+              ...newUsers[randomIndex],
+              ecoPoints: generateRandomUpdate(newUsers[randomIndex].ecoPoints),
+            };
+          }
+          return newUsers.sort((a, b) => b.ecoPoints - a.ecoPoints);
+        });
+        setUpdateCount(count => count + 1);
+      }, 2000),
+
+      // Less frequent larger updates
+      setInterval(() => {
+        setUsers((currentUsers) => {
+          const newUsers = [...currentUsers];
+          // Update 5-10 random users with bigger changes
+          const updateCount = Math.floor(Math.random() * 6) + 5;
+
+          for (let i = 0; i < updateCount; i++) {
+            const randomIndex = Math.floor(Math.random() * newUsers.length);
+            const multiplier = Math.random() * 3 + 1; // Bigger multiplier for larger changes
+            newUsers[randomIndex] = {
+              ...newUsers[randomIndex],
+              ecoPoints: generateRandomUpdate(newUsers[randomIndex].ecoPoints) * multiplier,
+            };
+          }
+          return newUsers.sort((a, b) => b.ecoPoints - a.ecoPoints);
+        });
+      }, 5000),
+
+      // Occasional "event" updates that affect multiple users in the same community
+      setInterval(() => {
+        setUsers((currentUsers) => {
+          const newUsers = [...currentUsers];
+          // Pick a random community
+          const randomCommunity = allCommunities[Math.floor(Math.random() * allCommunities.length)];
+
+          // Update all users in that community
+          newUsers.forEach((user, index) => {
+            if (user.community === randomCommunity && Math.random() < 0.7) {
+              newUsers[index] = {
+                ...user,
+                ecoPoints: generateRandomUpdate(user.ecoPoints),
+              };
+            }
+          });
+          return newUsers.sort((a, b) => b.ecoPoints - a.ecoPoints);
+        });
+      }, 10000),
+    ];
+
+    return () => intervals.forEach(clearInterval);
   }, []);
 
   const filteredUsers = users.filter(

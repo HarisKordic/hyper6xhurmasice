@@ -14,9 +14,6 @@ const Home = () => {
  const { data: session } = useSession();
  const [isMenuOpen] = useState(false);
  const [isDarkMode] = useState(false);
- const [isMenuOpen] = useState(false);
- const [isDarkMode] = useState(false);
- const { data: session } = useSession();
 
  if (session) {
   return (

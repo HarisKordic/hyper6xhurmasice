@@ -13,9 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
  return (
   <>
    {shouldRender ? <NavBar /> : <> </>}
-   <main>
-    <div className="lg:pl-64">{children}</div>
-   </main>
+   <main>{shouldRender ? <div className="lg:pl-64">{children}</div> : <>{children}</>}</main>
   </>
  );
 }

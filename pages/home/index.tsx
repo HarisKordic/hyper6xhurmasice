@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { ArrowRight, Globe2, Leaf, LineChart, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -14,6 +14,9 @@ const Home = () => {
  const { data: session } = useSession();
  const [isMenuOpen] = useState(false);
  const [isDarkMode] = useState(false);
+ const [isMenuOpen] = useState(false);
+ const [isDarkMode] = useState(false);
+ const { data: session } = useSession();
 
  if (session) {
   return (
@@ -56,7 +59,6 @@ const Home = () => {
    </div>
   );
  }
-
  return (
   <div className={`flex min-h-screen flex-col ${isDarkMode ? "dark" : ""}`}>
    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -73,7 +75,7 @@ const Home = () => {
        <Link href="#achievements" className="text-sm font-medium hover:text-primary">
         Achievements
        </Link>
-       <Button onClick={() => signIn("google")}>Sign In</Button>
+       <Button onClick={() => signIn("google", { callbackUrl: "/dashboard", redirect: false })}>Sign In</Button>
       </nav>
      </div>
     </div>
@@ -93,7 +95,7 @@ const Home = () => {
         <Link href="#achievements" className="text-sm font-medium hover:text-primary">
          Achievements
         </Link>
-        <Button onClick={() => signIn("google")} className="w-full">
+        <Button onClick={() => signIn("google", { callbackUrl: "/dashboard", redirect: false })} className="w-full">
          Sign In
         </Button>
        </nav>
@@ -123,7 +125,11 @@ const Home = () => {
         community for a better environment.
        </p>
        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-        <Button size="lg" onClick={() => signIn("google")} className="gap-2">
+        <Button
+         size="lg"
+         onClick={() => signIn("google", { callbackUrl: "/dashboard", redirect: false })}
+         className="gap-2"
+        >
          Get Started
          <ArrowRight className="h-4 w-4" />
         </Button>
@@ -260,7 +266,7 @@ const Home = () => {
        Start your journey towards a more sustainable future.
       </p>
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-       <Button size="lg" onClick={() => signIn("google")} className="gap-2">
+       <Button size="lg" onClick={() => signIn("google", { callbackUrl: "/dashboard" })} className="gap-2">
         Sign In with Google
         <ArrowRight className="h-4 w-4" />
        </Button>

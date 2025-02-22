@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TableFooter } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { User } from "@/lib/data";
-import { WeatherStatus } from "../weather-status";
+import { WeatherStatus } from "./weather-status";
 const ITEMS_PER_PAGE = 10;
 
 function CommunityTable({ paginatedUsers, currentPage }: { paginatedUsers: User[]; currentPage: number }) {
@@ -33,7 +33,7 @@ function CommunityTable({ paginatedUsers, currentPage }: { paginatedUsers: User[
        exit={{ opacity: 0 }}
        transition={{ duration: 0.2 }}
        layout
-       className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[1px_1px_10px_rgba(0,0,0,0.45)]"
+       className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[1px_1px_10px_rgba(0,0,0,0.13)]"
       >
        <TableCell className="font-medium">#{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</TableCell>
        <TableCell>{user.name}</TableCell>
@@ -59,7 +59,7 @@ function CommunityTable({ paginatedUsers, currentPage }: { paginatedUsers: User[
             {user.achievements.map((achievement, i) => (
              <Badge
               key={i}
-              className="h-8 w-8 rounded-full bg-secondary text-primary-foreground flex items-center justify-center"
+              className="h-8 w-8 rounded-full bg-secondary text-primary-foreground flex items-center justify-center hover:bg-primary-foreground hover:text-secondary hover:shadow-[1px_1px_10px_rgba(0,0,0,0.13)]"
              >
               {achievement.icon}
              </Badge>

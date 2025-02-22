@@ -13,7 +13,7 @@ export default function Footer() {
  };
 
  return (
-  <footer className="absolute bottom-0 left-0 right-0 w-full border-t bg-background p-3 lg:pl-72 ">
+  <footer className="absolute bottom-0 left-0 right-0 w-full border-t bg-background p-3 lg:pl-72">
    <div className="container max-w-7xl p-8 md:p-12">
     {/* Main footer content */}
     <div className="grid gap-8 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2">

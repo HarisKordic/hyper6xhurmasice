@@ -6,10 +6,8 @@ import { useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
-import CommunityTable from "@/components/ui/community-table";
-import { generateUsers, User } from "@/lib/data";
-import { useState } from "react";
 import Charts from "./components/charts";
+import TopTable from "./components/top-table";
 
 // Add these type definitions
 type StatCard = {
@@ -59,7 +57,6 @@ const stats: StatCard[] = [
 
 // Modify your Dashboard component to use the data
 export default function Dashboard() {
-  const [users] = useState<User[]>(() => generateUsers(3));
 
   const { data: session } = useSession();
 
@@ -99,7 +96,7 @@ export default function Dashboard() {
       <Charts />
 
       {/* Community Leaderboard */}
-      <CommunityTable paginatedUsers={users} currentPage={1} />
+      <TopTable />
     </div>
   );
 }

@@ -56,6 +56,36 @@ export default function EcoMap() {
 
   return (
     <div className="h-screen w-full bg-black text-white relative">
+      {/* Activity Feed */}
+      <Card className="absolute top-4 right-4 md:w-80 bg-black/80 backdrop-blur-md border-zinc-800 z-50 shadow-lg">
+        <ScrollArea className="h-48 rounded-lg p-4">
+          {mockUsers.map((user) => (
+            <div
+              key={user.id}
+              className={`flex items-start space-x-4 mb-4 p-2 rounded-lg transition-colors ${selectedUser?.id === user.id
+                ? "bg-zinc-800/50"
+                : "hover:bg-zinc-800/30"
+                }`}>
+              <Avatar className="w-10 h-10">
+                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-sm text-white">{user.name}</h3>
+                  <span className="text-xs text-zinc-400">{user.timestamp}</span>
+                </div>
+                <p className="text-sm text-zinc-300">{user.activity}</p>
+                <div className="flex items-center mt-1">
+                  {user.icon}
+                  <span className="text-xs text-green-500 ml-1">{user.emission}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </ScrollArea>
+      </Card>
+
       {/* Map Container */}
       <div className="h-full w-full bg-zinc-900 rounded-lg overflow-hidden relative">
         <iframe
@@ -89,39 +119,7 @@ export default function EcoMap() {
         </div>
       </div>
 
-      {/* Activity Feed */}
-      <Card className="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 bg-black/80 backdrop-blur-md border-zinc-800">
-        <ScrollArea className="h-48 rounded-lg p-4">
-          {mockUsers.map((user) => (
-            <div
-              key={user.id}
-              className={`flex items-start space-x-4 mb-4 p-2 rounded-lg transition-colors ${selectedUser?.id === user.id
-                ? "bg-zinc-800/50"
-                : "hover:bg-zinc-800/30"
-                }`}>
-              <Avatar className="w-10 h-10">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-              </Avatar>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-sm text-white">{user.name}</h3>
-                  <span className="text-xs text-zinc-400">
-                    {user.timestamp}
-                  </span>
-                </div>
-                <p className="text-sm text-zinc-300">{user.activity}</p>
-                <div className="flex items-center mt-1">
-                  {user.icon}
-                  <span className="text-xs text-green-500 ml-1">
-                    {user.emission}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </ScrollArea>
-      </Card>
+
     </div>
   );
 }

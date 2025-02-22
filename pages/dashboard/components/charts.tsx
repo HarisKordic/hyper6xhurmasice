@@ -1,5 +1,12 @@
 "use client";
-import { useQuery } from "react-query";
+import { ErrorAlert } from "@/components/error-alert";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Area,
   AreaChart,
@@ -10,16 +17,8 @@ import {
   XAxis,
   YAxis,
 } from "@/components/ui/chart";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
+import { useQuery } from "react-query";
 
 const fetchDashboardData = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard`);
@@ -41,14 +40,6 @@ const ChartSkeleton = () => (
       </div>
     </CardContent>
   </Card>
-);
-
-const ErrorAlert = ({ message }: { message: string }) => (
-  <Alert variant="destructive">
-    <AlertCircle className="h-4 w-4" />
-    <AlertTitle>Error</AlertTitle>
-    <AlertDescription>{message}</AlertDescription>
-  </Alert>
 );
 
 const Charts = () => {

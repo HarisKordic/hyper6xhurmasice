@@ -59,7 +59,7 @@ function CommunityTable({ paginatedUsers, currentPage }: { paginatedUsers: User[
             {user.achievements.map((achievement, i) => (
              <Badge
               key={i}
-              className="h-8 w-8 rounded-full bg-secondary text-primary-foreground flex items-center justify-center"
+              className="h-8 w-8 rounded-full bg-secondary text-primary-foreground flex items-center justify-center hover:bg-primary-foreground hover:text-secondary hover:shadow-[1px_1px_10px_rgba(0,0,0,0.13)]"
              >
               {achievement.icon}
              </Badge>

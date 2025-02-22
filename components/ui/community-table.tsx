@@ -33,7 +33,7 @@ function CommunityTable({ paginatedUsers, currentPage }: { paginatedUsers: User[
        exit={{ opacity: 0 }}
        transition={{ duration: 0.2 }}
        layout
-       className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[1px_1px_10px_rgba(0,0,0,0.45)]"
+       className="border-b transition-colors data-[state=selected]:bg-muted hover:shadow-[1px_1px_10px_rgba(0,0,0,0.13)]"
       >
        <TableCell className="font-medium">#{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</TableCell>
        <TableCell>{user.name}</TableCell>

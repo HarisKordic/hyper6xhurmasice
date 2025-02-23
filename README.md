@@ -1,4 +1,4 @@
-# 🚀 Hyper6xhurmasice
+# 🚀 Hyper6XHurmašice
 
 A modern web application built with Next.js and TypeScript, designed to provide a robust and scalable solution for web development needs.
 

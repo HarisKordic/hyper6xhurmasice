@@ -10,13 +10,15 @@ const BottomNavBar: React.FC<{ className?: string }> = ({ className }) => {
  return (
   <div
    className={clsx(
-    "fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/80 backdrop-blur-md shadow-lg border rounded-full flex justify-around py-3 px-6 z-50",
+    "fixed bottom-1 left-1/2 -translate-x-1/2 w-[90%] max-w-md sm:max-w-2xl bg-white/80 backdrop-blur-md shadow-lg border rounded-full flex justify-around py-3 px-6 z-50",
     className
    )}
   >
    <Link href="/achievements">
     <div
-     className={`flex flex-col items-center ${router.pathname === "/achievements" ? "text-blue-500" : "text-gray-500"}`}
+     className={`flex flex-col items-center ${
+      router.pathname === "/achievements" ? "text-green-500" : "text-gray-500"
+     }`}
     >
      <Medal className="h-6 w-6" />
     </div>
@@ -24,7 +26,7 @@ const BottomNavBar: React.FC<{ className?: string }> = ({ className }) => {
 
    <Link href="/community">
     <div
-     className={`flex flex-col items-center ${router.pathname === "/community" ? "text-blue-500" : "text-gray-500"}`}
+     className={`flex flex-col items-center ${router.pathname === "/community" ? "text-green-500" : "text-gray-500"}`}
     >
      <Users2 className="h-6 w-6" />
     </div>
@@ -32,14 +34,14 @@ const BottomNavBar: React.FC<{ className?: string }> = ({ className }) => {
 
    <Link href="/dashboard">
     <div
-     className={`flex flex-col items-center ${router.pathname === "/dashboard" ? "text-blue-500" : "text-gray-500"}`}
+     className={`flex flex-col items-center ${router.pathname === "/dashboard" ? "text-green-500" : "text-gray-500"}`}
     >
      <CircleDashed className="h-6 w-6" />
     </div>
    </Link>
 
    <Link href="/map">
-    <div className={`flex flex-col items-center ${router.pathname === "/map" ? "text-blue-500" : "text-gray-500"}`}>
+    <div className={`flex flex-col items-center ${router.pathname === "/map" ? "text-green-500" : "text-gray-500"}`}>
      <MapPin className="h-6 w-6" />
     </div>
    </Link>

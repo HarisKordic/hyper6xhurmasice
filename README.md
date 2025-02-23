@@ -8,6 +8,10 @@ A modern web application built with Next.js and TypeScript, designed to provide 
 
 ## Prod: https://client3.hyper6xhurmasice.online
 
+## Our Entire System:
+![Hyper6XHurmasice drawio](https://github.com/user-attachments/assets/4b3304bf-0870-4e4d-b7f6-aeb7aed92fe2)
+
+
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)

@@ -1,11 +1,11 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 import { ArrowRight, Globe2, Leaf, LineChart, Users } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,8 @@ type User = {
 
 const Home = () => {
  const { data: session } = useSession();
+ // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ const [storageReady, setStorageReady] = useState(false);
  const [isMenuOpen] = useState(false);
  const [isDarkMode] = useState(false);
 
@@ -34,9 +36,15 @@ const Home = () => {
  const { data: user } = useQuery({
   queryKey: ["user"],
   queryFn: fetchUsers,
+  enabled: !!session,
  });
 
- sessionStorage.setItem("user", JSON.stringify(user));
+ useEffect(() => {
+  if (user) {
+   sessionStorage.setItem("user", JSON.stringify(user));
+   setStorageReady(true);
+  }
+ }, [user]);
 
  if (session) {
   return (
@@ -67,8 +75,8 @@ const Home = () => {
        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
         Your dashboard is waiting. Continue tracking your environmental impact and earning achievements.
        </p>
-       <Link href="/dashboard">
-        <Button size="lg" className="gap-2">
+       <Link href={storageReady ? "/dashboard" : "#"}>
+        <Button size="lg" className="gap-2" disabled={!storageReady}>
          Go to Dashboard
          <ArrowRight className="h-4 w-4" />
         </Button>

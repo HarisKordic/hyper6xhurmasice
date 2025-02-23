@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import Layout from "@/components/layout";
 import { Toaster } from "sonner";
+import Head from "next/head";
 
 const queryClient = new QueryClient();
 
@@ -34,15 +35,24 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <AuthWrapper>
-        <QueryClientProvider client={queryClient}>
-          <Layout>
-            <Toaster />
-            <Component {...pageProps} />
-          </Layout>
-        </QueryClientProvider>
-      </AuthWrapper>
-    </SessionProvider>
+    <>
+      <Head>
+        <title>EcoTracker</title>
+        <meta
+          name="description"
+          content="Track and reduce your environmental impact"
+        />
+      </Head>
+      <SessionProvider session={session}>
+        <AuthWrapper>
+          <QueryClientProvider client={queryClient}>
+            <Layout>
+              <Toaster />
+              <Component {...pageProps} />
+            </Layout>
+          </QueryClientProvider>
+        </AuthWrapper>
+      </SessionProvider>
+    </>
   );
 }

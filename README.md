@@ -2,6 +2,12 @@
 
 A modern web application built with Next.js and TypeScript, designed to provide a robust and scalable solution for web development needs.
 
+## Full Project:
+Golang API: https://github.com/HarisKordic/hyper-api
+Next.js Frontend: https://github.com/HarisKordic/hyper6xhurmasice
+
+## Prod: https://client3.hyper6xhurmasice.online
+
 ## 📚 Table of Contents
 
 - [Overview](#overview)

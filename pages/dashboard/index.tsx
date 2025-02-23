@@ -1,16 +1,14 @@
 "use client";
 
-import type React from "react";
 import { BadgeCheck, Globe2, Leaf, Users } from "lucide-react";
 import { useSession } from "next-auth/react";
+import type React from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
-import CommunityTable from "@/components/ui/community-table";
-import { generateUsers, type User } from "@/lib/data";
-import { useState } from "react";
 import Charts from "./components/charts";
+import TopTable from "./components/top-table";
 
 type StatCard = {
  title: string;
@@ -52,7 +50,6 @@ const stats: StatCard[] = [
 ];
 
 export default function Dashboard() {
- const [users] = useState<User[]>(() => generateUsers(3));
  const { data: session } = useSession();
 
  return (
@@ -86,7 +83,7 @@ export default function Dashboard() {
 
    <div className="bg-card rounded-lg shadow-md p-6">
     <h2 className="text-xl font-semibold mb-4 text-primary">Top Community Members</h2>
-    <CommunityTable paginatedUsers={users} currentPage={1} />
+    <TopTable />
    </div>
   </div>
  );

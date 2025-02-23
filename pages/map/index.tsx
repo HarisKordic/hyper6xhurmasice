@@ -106,11 +106,10 @@ export default function EcoMap() {
           {users?.map((user) => (
             <div
               key={user.id}
-              className={`flex space-x-4 mb-4 p-4 rounded-lg transition-colors items-center cursor-pointer ${
-                selectedUser?.id === user.id
-                  ? "shadow-[1px_1px_10px_rgba(0,0,0,0.13)]"
-                  : "hover:bg-zinc-400/30"
-              }`}
+              className={`flex space-x-4 mb-4 p-4 rounded-lg transition-colors items-center cursor-pointer ${selectedUser?.id === user.id
+                ? "shadow-[1px_1px_10px_rgba(0,0,0,0.13)]"
+                : "hover:bg-zinc-400/30"
+                }`}
               onClick={() => {
                 setSelectedUser(user);
                 if (mapRef.current) {
@@ -139,7 +138,7 @@ export default function EcoMap() {
                 <div className="flex items-center mt-1">
                   {getIcon(user.iconType)}
                   <span className="text-xs text-green-600 ml-1">
-                    {user.emission_amount ? `-${user.emission_amount}kg CO2` : "0kg CO2"}
+                    {user.emission_amount ? `${user.emission_amount}kg CO2` : "0kg CO2"}
                   </span>
                 </div>
               </div>

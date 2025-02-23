@@ -51,8 +51,6 @@ export default function EcoMap() {
     queryFn: fetchUsers,
   });
 
-  console.log({ users });
-
   const [viewState, setViewState] = useState({
     longitude: 17.8078,
     latitude: 43.3438,
